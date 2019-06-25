@@ -5,10 +5,6 @@
  */
 
 
-&gic {
-	num_cpus = <2>;
-	num_interrupts = <96>;
-};
 &lpd_dma_chan1 {
 	status = "okay";
 };
@@ -52,15 +48,6 @@
 	xlnx,metrics-sample-count-width = <0x20>;
 	xlnx,num-monitor-slots = <0x1>;
 	xlnx,num-of-counters = <0x3>;
-};
-&zynqmp_dpsub {
-	phy-names = "dp-phy0","dp-phy1";
-	phys = <&lane3 5 0 1 27000000>, <&lane2 5 1 1 27000000>;
-	status = "okay";
-	xlnx,max-lanes = <2>;
-};
-&xlnx_dpdma {
-	status = "okay";
 };
 &gem1 {
 	phy-mode = "rgmii-id";
@@ -118,17 +105,19 @@
 &rtc {
 	status = "okay";
 };
-&sata {
-	status = "okay";
-};
 &sdhci0 {
-	clock-frequency = <175000000>;
+	clock-frequency = <199998000>;
 	status = "okay";
 	xlnx,mio_bank = <0x0>;
 	no-1-8-v;
 	wp-inverted;
 };
 &serdes {
+	status = "okay";
+};
+&spi1 {
+	is-decoded-cs = <0>;
+	num-cs = <1>;
 	status = "okay";
 };
 &uart0 {
@@ -164,33 +153,5 @@
 };
 &ams_pl {
 	status = "okay";
-};
-&zynqmp_dp_snd_pcm0 {
-	status = "okay";
-};
-&zynqmp_dp_snd_pcm1 {
-	status = "okay";
-};
-&zynqmp_dp_snd_card0 {
-	status = "okay";
-};
-&zynqmp_dp_snd_codec0 {
-	status = "okay";
-};
-&sata {
-
-        ceva,p0-cominit-params = <0x18401828>;
-        ceva,p0-comwake-params = <0x614080e>;
-        ceva,p0-burst-params = <0x13084a06>;
-        ceva,p0-retry-params = <0x96a43ffc>;
-        ceva,p1-cominit-params = <0x18401828>;
-        ceva,p1-comwake-params = <0x614080e>;
-        ceva,p1-burst-params = <0x13084a06>;
-        ceva,p1-retry-params = <0x96a43ffc>;
-
-        phy-names = "sata-phy";
-        phys = <&lane0 0x1 0x0 0x0 125000000>,
-                <&lane1 0x1 0x1 0x0 125000000>;
-        status = "okay";
 };
 
